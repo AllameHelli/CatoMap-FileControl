@@ -1,0 +1,41 @@
+#:import Window kivy.core.window.Window
+<MainScreen>:
+    BoxLayout:
+        orientation:'vertical'
+        ScrollView:
+            GridLayout:
+                size_hint:(None,None)
+                id:Grid
+                cols:Window.width//100-1
+                padding:[10, 120, 0, 100]
+                spacing:30
+
+    ActionBar:
+        pos_hint: {'top':1}
+        ActionView:
+            use_separator: True
+            ActionPrevious:
+                title:'File Manager'
+                with_previous: False
+            ActionOverflow:
+            ActionButton:
+                text: 'History'
+    ActionBar:
+
+        pos_hint: {'bottom':1}
+        ActionView:
+            use_separator: True
+            ActionPrevious:
+                id:Action
+                title:'Selected Files: '
+                on_press:root.back()
+            ActionOverflow:
+            ActionButton:
+                text: 'Coppy'
+                on_press: root.copy()
+                id:Copy
+            ActionButton:
+                text: 'Download'
+                on_press: root.download()
+            ActionButton:
+                text: 'Details'
